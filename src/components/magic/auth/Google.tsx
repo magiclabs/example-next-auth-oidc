@@ -21,11 +21,11 @@ const Google = ({ token, setToken }: LoginProps) => {
 
   useEffect(() => {
     if (status === 'authenticated' || session) {
-      getUserSession();
+      loginWithMagic();
     }
   }, [status]);
 
-  const getUserSession = async () => {
+  const loginWithMagic = async () => {
     const session = await getSession();
     const DID = await magic?.openid.loginWithOIDC({
       jwt: session?.idToken,
