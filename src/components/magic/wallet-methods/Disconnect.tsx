@@ -13,8 +13,8 @@ const Disconnect = ({ setToken }: LoginProps) => {
     if (!magic) return;
     try {
       setDisabled(true);
+      await signOut({ redirect: false }) // Sign out of NextAuth
       await logout(setToken, magic); // Sign out of Magic
-      await signOut() // Sign out of NextAuth
       setDisabled(false);
     } catch (error) {
       setDisabled(false);

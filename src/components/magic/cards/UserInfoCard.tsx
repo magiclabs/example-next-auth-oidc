@@ -52,8 +52,8 @@ const UserInfo = ({ token, setToken }: LoginProps) => {
   const disconnect = useCallback(async () => {
     try {
       if (magic) {
+        await signOut({ redirect: false }); // Sign out of NextAuth
         await logout(setToken, magic); // Sign out of Magic
-        await signOut(); // Sign out of NextAuth
       }
     } catch (error) {
       console.error('Error disconnecting:', error);

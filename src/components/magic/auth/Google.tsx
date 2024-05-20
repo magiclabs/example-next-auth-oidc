@@ -29,7 +29,7 @@ const Google = ({ token, setToken }: LoginProps) => {
     const session = await getSession();
     const DID = await magic?.openid.loginWithOIDC({
       jwt: session?.idToken,
-      providerId: "Yi56jvlw9lzf9vSNMUnGjVvMxIpeCBaor85u2EGvncU="
+      providerId: process.env.NEXT_PUBLIC_PROVIDER_ID!
     });
 
     const metadata = await magic?.user.getMetadata();
